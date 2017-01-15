@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""Tornado process to subcribe to a nats broker for raw message delivery."""
+
+from __future__ import absolute_import, print_function, unicode_literals
+
 import argparse
 import sys
 
@@ -22,7 +27,9 @@ def show_usage_and_die():
 def main():
     # Create client and connect to server
     nc = NATS()
-    servers = ["nats://127.0.0.1:4222"]
+    server = Configuration('global').get('nats.host')
+    port = Configuration('global').get('nats.port', 4222)
+    servers = ['{}:{}'.format(server, port)]
 
     opts = {"servers": servers}
     yield nc.connect(**opts)
@@ -31,7 +38,8 @@ def main():
     inbound_email_sub = subscribers.InboundEmail()
     future = nc.subscribe("inboundSMTP", "",
                           inbound_email_sub.handler)
-    sid = future.result()
+    future.result()
+
 
 if __name__ == '__main__':
     # load Caliopen config

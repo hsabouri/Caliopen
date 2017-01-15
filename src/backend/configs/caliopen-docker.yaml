@@ -16,6 +16,10 @@ cassandra:
         - 'cassandra.dev.caliopen.org'
     consistency_level: 1
 
+nats:
+    hosts: nats.dev.caliopen.org
+    port: 4222
+
 system:
     default_tags:
         -
