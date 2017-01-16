@@ -56,3 +56,34 @@ services:
           - api:api.dev.caliopen.org
       ports:
         - "4000:4000"
+
+  # SMTP delivery services
+  #
+  # Nats as message broker
+  nats:
+      image: nats
+      ports:
+          - "4222:4222"
+          - "6222:6222"
+
+  # lmtp server
+  lmtp:
+      build: ../src/backend/protocols/go.smtp
+      links:
+          - nats:nats.dev.caliopen.org
+          - cassandra:cassandra.dev.caliopen.org
+          - elasticsearch:es.dev.caliopen.org
+      ports:
+          - "2525:2525"
+      volumes:
+          - ..:/srv/caliopen
+
+  # delivery worker
+  delivery:
+      build: ../src/backend/interfaces/NATS/py.client
+      links:
+          - nats:nats.dev.caliopen.org
+          - cassandra:cassandra.dev.caliopen.org
+          - elasticsearch:es.dev.caliopen.org
+      volumes:
+          - ..:/srv/caliopen
