@@ -8,6 +8,9 @@ ADD . /go/src/github.com/Caliopen/Caliopen/src/backend/protocols/go.smtp
 WORKDIR /go/src/github.com/Caliopen/Caliopen/src/backend/protocols/go.smtp/
 RUN make
 
-ENTRYPOINT /go/bin/caliopen_lmtpd
+# For the moment we must put configuration in the same directory as binary
+COPY ./caliopen_lmtpd.conf /go/bin
+
+ENTRYPOINT /go/bin/caliopen_lmtpd serve
  
 EXPOSE 2525
