@@ -26,6 +26,7 @@ class SignupForm extends Component {
       formValues: {
         username: '',
         password: '',
+        email: '',
         tos: false,
       },
       passwordStrength: '',
@@ -137,6 +138,20 @@ class SignupForm extends Component {
               <PasswordStrength strength={this.state.passwordStrength} />
             </FormColumn>
             )}
+          </FormRow>
+          <FormRow>
+            <FormColumn bottomSpace >
+              <TextFieldGroup
+                id="signup_email"
+                name="email"
+                label={__('signup.form.email.label')}
+                placeholder={__('signup.form.email.placeholder')}
+                value={this.state.formValues.email}
+                errors={errors.email}
+                onChange={this.handleInputChange}
+                showLabelforSr
+              />
+            </FormColumn>
           </FormRow>
           <FormRow>
             <FormColumn bottomSpace>
