@@ -89,3 +89,10 @@ services:
           - cassandra:cassandra.dev.caliopen.org
           - elasticsearch:es.dev.caliopen.org
           - nats:nats.dev.caliopen.org
+
+  # Smtp Server
+  postfix:
+      build: ../src/backend/smtp-server
+      links:
+        - cassandra:cassandra.dev.caliopen.org  
+	- broker:broker.dev.caliopen.org
