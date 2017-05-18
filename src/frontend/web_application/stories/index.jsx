@@ -14,6 +14,7 @@ import {
   CheckboxFieldGroup,
   CollectionFieldGroup,
   Fieldset,
+  InputFileGroup,
   Legend,
   FormGrid,
   FormRow,
@@ -208,6 +209,20 @@ storiesOf('Form', module)
       <TextFieldGroup
         name="my-text"
         onChange={action('onChange')}
+        {...props}
+      />
+    );
+  })
+  .addWithInfo('InputFileGroup', () => {
+    const props = {
+      label: text('label', 'Add a file'),
+      multiple: boolean('multiple', false),
+      accept: array('accept', ['.jpg', '.png']),
+    };
+
+    return (
+      <InputFileGroup
+        name="my-input-file"
         {...props}
       />
     );

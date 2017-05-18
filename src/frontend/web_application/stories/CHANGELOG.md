@@ -4,6 +4,7 @@
 
 ### Added
 
+  - InputFileGroup
   - DropdownMenu
   - MultidimensionalPi
   - IconLetter simple refactor of ContactIconLetter

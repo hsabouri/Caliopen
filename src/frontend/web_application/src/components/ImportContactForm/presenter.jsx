@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FieldErrors } from '../form';
+import { InputFileGroup } from '../form';
 import Button from '../Button';
-import Icon from '../Icon';
 
 import './style.scss';
 
@@ -26,34 +25,6 @@ File.propTypes = {
   onClick: PropTypes.func.isRequired,
   file: PropTypes.shape({}).isRequired,
 };
-
-const InputFile = ({ onChange, errors, __ }) => (
-  <div>
-    <label htmlFor="files[]" className="m-import-contact-form__label">
-      <span className="m-import-contact-form__label-button"><Icon type="plus" /></span>
-      <span className="m-import-contact-form__label-text">{__('import-contact.form.add_a_file.label')}</span>
-      <span className="m-import-contact-form__label-icon"><Icon type="folder" /></span>
-      <input
-        id="files"
-        type="file"
-        name="files[]"
-        className="m-import-contact-form__input"
-        onChange={onChange}
-        accept=".vcf, .vcard"
-      />
-    </label>
-    { errors &&
-      <FieldErrors errors={errors} />
-    }
-  </div>
-);
-
-InputFile.propTypes = {
-  __: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  errors: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
 
 class ImportContactForm extends Component {
   static propTypes = {
@@ -145,7 +116,12 @@ class ImportContactForm extends Component {
           {file ?
             <File file={file} onClick={this.resetForm} />
           :
-            <InputFile onChange={this.onInputChange} errors={[error]} __={__} />
+            <InputFileGroup
+              label={__('import-contact.form.add_a_file.label')}
+              accept={['.vcf', '.vcard']}
+              onChange={this.onInputChange}
+              errors={[error]}
+            />
           }
           {this.renderButtons()}
         </form>

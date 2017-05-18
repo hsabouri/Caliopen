@@ -1,6 +1,4 @@
 @import '../../styles/common';
-@import '../../styles/object/o-clickable';
-@import '../../styles/object/o-hidden-element';
 @import '../../styles/vendor/bootstrap_foundation-sites';
 
 .m-import-contact-form {
@@ -9,7 +7,6 @@
   &__file {
     @include flex-grid-row;
     min-height: $co-component__height;
-    margin-top: $co-margin;
     background: $co-color__fg__back--low;
     line-height: $co-component__height;
   }
@@ -28,40 +25,6 @@
   &__remove-button {
     @include flex-grid-size(shrink);
     margin-left: auto;
-  }
-
-  &__label {
-    @include flex-grid-row;
-    position: relative;
-    margin-top: $co-component__spacing;
-    background: $co-color__fg__back--low;
-    overflow: hidden;
-    line-height: $co-component__height;
-    cursor: pointer;
-
-    &:hover {
-      color: $co-color__fg__text--high;
-    }
-  }
-
-  &__label-button {
-    @include flex-grid-size(shrink);
-    @include o-clickable;
-    @include o-clickable--button;
-    @include o-clickable--plain;
-  }
-
-  &__label-text {
-    @include flex-grid-column;
-  }
-
-  &__label-icon {
-    @include flex-grid-column(shrink);
-    margin-left: auto;
-  }
-
-  &__input {
-    @include o-hidden-element--input-file;
   }
 
   &__buttons {

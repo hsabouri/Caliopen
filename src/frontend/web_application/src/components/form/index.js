@@ -1,6 +1,7 @@
 import FieldErrors from './FieldErrors';
 import Fieldset, { Legend } from './Fieldset';
 import FormGrid, { FormRow, FormColumn } from './FormGrid';
+import InputFileGroup from './InputFileGroup';
 import InputText from './InputText';
 import PasswordStrength from './PasswordStrength';
 import RadioFieldGroup from './RadioFieldGroup';
@@ -17,6 +18,7 @@ export {
   FormGrid,
   FormRow,
   FormColumn,
+  InputFileGroup,
   InputText,
   RadioFieldGroup,
   PasswordStrength,
