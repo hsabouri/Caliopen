@@ -31,6 +31,7 @@ import ContactBook from './layouts/ContactBook';
 import ContactDetails from './components/ContactDetails';
 import DefList from '../src/components/DefList';
 import Devices from './layouts/Devices';
+import Dropdown2 from '../src/components/Dropdown2';
 import Dropdown, { withDropdownControl } from '../src/components/Dropdown';
 import DropdownMenu from '../src/components/DropdownMenu';
 import Icon, { typeAssoc } from '../src/components/Icon';
@@ -147,6 +148,27 @@ storiesOf('Contact', module)
 const DropdownControl = withDropdownControl(Button);
 storiesOf('Dropdown', module)
   .addDecorator(hostDecorator)
+  .addWithInfo('Dropdown2', () => {
+    const controller = 'Click me!';
+    const dropdownProps2 = {
+      position: select('position', { bottom: 'bottom', top: 'top', right: 'right', left: 'left' }, 'bottom'),
+      alignRight: boolean('alignRight', false),
+    };
+
+    return (
+      <Dropdown2
+        id="story-dropdown2"
+        controller={controller}
+        {...dropdownProps2}
+      >
+        <p style={{ maxWidth: '320px' }}>Sed tamen haec cum ita tutius observentur,
+          quidam vigore artuum inminuto rogati ad nuptias
+          ubi aurum dextris manibus cavatis offertur,
+          inpigre vel usque Spoletium pergunt.
+          haec nobilium sunt instituta.</p>
+      </Dropdown2>
+    );
+  })
   .addWithInfo('Dropdown', () => {
     const dropdownProps = {
       position: select('position', { '': '', bottom: 'bottom' }, ''),
