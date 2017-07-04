@@ -145,7 +145,7 @@ class ContactBook extends Component {
     // (user is the only contact without `title`)
     const contactWithoutUser = contacts.filter(contact => contact.title);
 
-    const tags = [].concat(...contactWithoutUser.map(contact => contact.tags));
+    const tags = [].concat(...contactWithoutUser.map(contact => (contact.tags ? contact.tags : '')));
 
     return (
       <div className="l-contact-book">
