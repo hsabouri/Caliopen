@@ -4,14 +4,21 @@
 
 package objects
 
-import "github.com/gocql/gocql"
+import (
+        "github.com/gocql/gocql"
+        "time"
+)
 
 type RawMessage struct {
 	//Json_rep   string `cql:"json_rep"          json:"json_rep"` //json representation of the raw message with its envelope
-	Raw_msg_id UUID   `cql:"raw_msg_id"        json:"raw_msg_id"`
-	Raw_data   string `cql:"raw_data"          json:"raw_data"` //could be empty if raw message is too large to be stored in db
-	Raw_Size   uint64 `cql:"raw_size"          json:"raw_size"`
-	URI        string `cql:"uri"               json:"uri"` //object's location if message is too large to be stored in db
+	Raw_msg_id   UUID       `cql:"raw_msg_id"        json:"raw_msg_id"`
+	Raw_data     string     `cql:"raw_data"          json:"raw_data"` //could be empty if raw message is too large to be stored in db
+	Raw_Size     uint64     `cql:"raw_size"          json:"raw_size"`
+	URI          string     `cql:"uri"               json:"uri"` //object's location if message is too large to be stored in db
+	Subject      string     `cql:"subject"           json:"subject"`
+        Envelope     *Envelope  `cql:"envelope"          json:"envelope"`
+        Date         time.Time  `cql:"date"              json:"date"`  //the message date
+        InternalDate time.Time  `cql:"internal_date"     json:"internal_date"` //the date the message was received by the server
 }
 
 // unmarshal a map[string]interface{} that must owns all Message fields
