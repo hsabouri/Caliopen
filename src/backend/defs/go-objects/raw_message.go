@@ -7,6 +7,7 @@ package objects
 import (
         "github.com/gocql/gocql"
         "time"
+	//"github.com/CaliOpen/Caliopen/src/backend/defs/go-objects"
 )
 
 type RawMessage struct {
