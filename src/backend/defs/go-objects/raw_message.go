@@ -7,6 +7,7 @@ package objects
 import (
         "github.com/gocql/gocql"
         "time"
+	//"github.com/CaliOpen/Caliopen/src/backend/defs/go-objects"
 )
 
 type RawMessage struct {
@@ -30,4 +31,11 @@ func (msg *RawMessage) UnmarshalCQLMap(input map[string]interface{}) {
 	size, _ := input["raw_size"].(int)
 	msg.Raw_Size = uint64(size)
 	msg.URI, _ = input["uri"].(string)
+	subject, _ := input["subject"].(string)
+	msg.Subject = string(subject)
+	msg.Envelope = input["envelope"].(*Envelope)
+	date, _ := input["date"].(time.Time)
+	msg.Date = time.Time(date)
+	internal_date, _ := input["internal_date"].(time.Time)
+	msg.InternalDate = time.Time(internal_date) 
 }
