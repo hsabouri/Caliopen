@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import { withTranslator } from '@gandi/react-translate';
-import Account from './scenes/Account';
 import Contact from './scenes/Contact';
 import Auth from './scenes/Auth';
 import DiscussionList from './scenes/DiscussionList';
 import AppRoute from './scenes/AppRoute';
 import NewDraft from './scenes/NewDraft';
+import AccountRoute from './scenes/AccountRoute';
+import AccountProfile from './scenes/Account';
+import AccountSecurity from './scenes/AccountSecurity';
+import AccountPrivacy from './scenes/AccountPrivacy';
 import SettingsRoute from './scenes/SettingsRoute';
 import DevicesRoute from './scenes/DevicesRoute';
 import MessageList from './scenes/MessageList';
@@ -54,14 +57,37 @@ export const getRouteConfig = ({ __ }) => [
         app: 'contact',
       },
       {
+        path: '/account',
+        component: AccountRoute,
+        app: 'account',
+        label: __('account.route.label.default'),
+        routes: [
+          {
+            path: '/account/profile',
+            component: AccountProfile,
+            label: __('account.route.label.profile'),
+          },
+          {
+            path: '/account/privacy',
+            component: AccountPrivacy,
+            label: __('account.route.label.privacy'),
+          },
+          {
+            path: '/account/security',
+            component: AccountSecurity,
+            label: __('account.route.label.security'),
+          },
+        ],
+      },
+      {
         path: '/settings',
         component: SettingsRoute,
         app: 'settings',
         label: __('settings.route.label.default'),
         routes: [
           {
-            path: '/settings/account',
-            component: Account,
+            path: '/settings/identities',
+            component: AccountProfile,
             label: __('settings.route.label.account'),
           },
           {

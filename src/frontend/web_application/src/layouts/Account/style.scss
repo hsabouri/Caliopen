@@ -1,0 +1,9 @@
+@import '../../styles/common';
+@import '../../styles/object/o-form-element';
+@import '../../styles/vendor/bootstrap_foundation-sites';
+
+.l-account {
+  &__panel {
+    padding-top: $co-margin;
+  }
+}

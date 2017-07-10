@@ -4,7 +4,7 @@ import Section from '../../components/Section';
 import Button from '../../components/Button';
 import Notification, { isSupported, PERMISSION_DENIED, PERMISSION_GRANTED } from '../../services/browser-notification';
 
-class SettingsView extends Component {
+class AccountPrivacy extends Component {
   static propTypes = {
     __: PropTypes.func.isRequired,
   };
@@ -84,4 +84,4 @@ class SettingsView extends Component {
   }
 }
 
-export default SettingsView;
+export default AccountPrivacy;
