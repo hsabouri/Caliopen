@@ -8,6 +8,7 @@ import './style.scss';
 
 const Settings = ({ __, children }) => {
   const navLinks = [
+    { title: __('settings.identities'), to: '/settings/identities', active: false },
     { title: __('settings.application'), to: '/settings/appplication', active: false },
     { title: __('settings.view'), to: '/settings/view', active: false },
     { title: __('settings.tags'), to: '/settings/tags', active: false },

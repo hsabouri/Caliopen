@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class AccountPrivacy extends Component {
+class SettingsIdentities extends Component {
   static propTypes = {
     __: PropTypes.func.isRequired,
   };
@@ -12,11 +12,11 @@ class AccountPrivacy extends Component {
     const { __ } = this.props;
 
     return (
-      <div className="s-account-privacy">
-        {__('account.privacy')}
+      <div className="s-settings-identities">
+        {__('settings.identities')}
       </div>
     );
   }
 }
 
-export default AccountPrivacy;
+export default SettingsIdentities;

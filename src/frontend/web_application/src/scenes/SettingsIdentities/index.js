@@ -9,6 +9,14 @@ import Presenter from './presenter';
 
 const userSelector = state => state.user;
 
+// const remoteIdentitiesSelector = createSelector(
+//   state => state.remoteIdentity,
+//   remoteIdentityState => ({
+//     remoteIdentities: remoteIdentityState
+//       .remoteIdentities.map(id => remoteIdentityState.remoteIdentitiesById[id]),
+//   })
+// );
+
 const mapStateToProps = createSelector(
   [userSelector],
   userState => ({

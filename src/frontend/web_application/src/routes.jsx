@@ -12,6 +12,7 @@ import AccountProfile from './scenes/Account';
 import AccountSecurity from './scenes/AccountSecurity';
 import AccountPrivacy from './scenes/AccountPrivacy';
 import SettingsRoute from './scenes/SettingsRoute';
+import SettingsIdentities from './scenes/SettingsIdentities';
 import DevicesRoute from './scenes/DevicesRoute';
 import MessageList from './scenes/MessageList';
 import ContactBook from './scenes/ContactBook';
@@ -87,8 +88,8 @@ export const getRouteConfig = ({ __ }) => [
         routes: [
           {
             path: '/settings/identities',
-            component: AccountProfile,
-            label: __('settings.route.label.account'),
+            component: SettingsIdentities,
+            label: __('settings.route.label.identities'),
           },
           {
             path: '/settings/view',

@@ -57,7 +57,7 @@ class Presenter extends Component {
               <Link to="/account/profile" expanded button>{__('header.menu.account')}</Link>
             </VerticalMenuItem>
             <VerticalMenuItem>
-              <Link to="/settings/devices" expanded button>{__('header.menu.settings')}</Link>
+              <Link to="/settings/identities" expanded button>{__('header.menu.settings')}</Link>
             </VerticalMenuItem>
             <VerticalMenuItem>
               {user && (

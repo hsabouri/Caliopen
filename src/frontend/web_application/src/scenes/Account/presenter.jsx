@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Spinner from '../../components/Spinner';
 import ContactDetails from '../../components/ContactDetails';
 import ContactProfile from '../../components/ContactProfile';
-import AccountOpenPGPKeys from './components/AccountOpenPGPKeys';
 import './style.scss';
 
 class Account extends Component {
@@ -53,11 +52,6 @@ class Account extends Component {
                   onChange={this.handleContactChange}
                 />
               )}
-
-              <div className="s-account__openpgp">
-                <AccountOpenPGPKeys user={user} />
-              </div>
-
             </div>
             <div className="s-account__col-datas-online">
               <ContactDetails

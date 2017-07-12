@@ -8,9 +8,9 @@ import './style.scss';
 
 const Account = ({ __, children }) => {
   const navLinks = [
-    { title: __('account.route.label.profile'), to: '/account/profile', active: false },
-    { title: __('account.route.label.privacy'), to: '/account/privacy', active: false },
-    { title: __('account.route.label.security'), to: '/account/security', active: false },
+    { title: __('account.profile'), to: '/account/profile', active: false },
+    { title: __('account.privacy'), to: '/account/privacy', active: false },
+    { title: __('account.security'), to: '/account/security', active: false },
   ];
 
   return (

@@ -12,6 +12,7 @@ const registeredRoutes = [
   '/contacts/:contactId',
   '/compose',
   '/settings/:setting',
+  '/account/:setting',
 ];
 
 const routeActionHandler = ({ store, action }) => {

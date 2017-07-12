@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import AccountOpenPGPKeys from './components/AccountOpenPGPKeys';
+
 
 class AccountSecurity extends Component {
   static propTypes = {
-    __: PropTypes.func.isRequired,
+    // __: PropTypes.func.isRequired,
     requestUser: PropTypes.func.isRequired,
-    updateContact: PropTypes.func.isRequired,
-    onRemoteIdentityChange: PropTypes.func.isRequired,
     user: PropTypes.shape({}),
-    isFetching: PropTypes.bool,
   };
   static defaultProps = {
     user: undefined,
-    isFetching: false,
   };
 
-  state = {};
+  componentDidMount() {
+    this.props.requestUser();
+  }
 
   render() {
-    // const { user } = this.props;
+    const { user } = this.props;
 
     return (
-      <div className="s-account__openpgp" />
+      <div className="s-account-security">
+        <AccountOpenPGPKeys user={user} />
+      </div>
     );
   }
 }

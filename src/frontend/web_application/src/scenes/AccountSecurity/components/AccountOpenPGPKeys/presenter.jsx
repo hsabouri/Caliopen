@@ -28,14 +28,9 @@ class AccountOpenPGPKeys extends Component {
     isLoading: false,
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      editMode: false,
-    };
-    this.handleClickEditMode = this.handleClickEditMode.bind(this);
-    this.renderPrivateKey = this.renderPrivateKey.bind(this);
-  }
+  state = {
+    editMode: false,
+  };
 
   componentDidMount() {
     if (this.props.prefetch) {
@@ -43,13 +38,13 @@ class AccountOpenPGPKeys extends Component {
     }
   }
 
-  handleClickEditMode() {
+  handleClickEditMode = () => {
     this.setState(prevState => ({
       editMode: !prevState.editMode,
     }));
   }
 
-  renderPrivateKey(keyPair, key) {
+  renderPrivateKey = (keyPair, key) => {
     const { onDeleteKey } = this.props;
 
     return (
@@ -96,18 +91,7 @@ class AccountOpenPGPKeys extends Component {
         >
           {__('account.openpgp.title')}
         </Subtitle>
-        <div className="m-account-openpgp__info">
-          <p>
-            This feature is in high development process and can evolve quickly. The keys you will
-            store here are available on your current browser only. This will not be uploaded on the
-            server and you will not able to see it on any other devices.
-          </p>
-          <p>
-            Be warned, the key pair generation is pretty slow and will freeze this page for
-            approximatively 20 seconds (depends on your device capacities). A fix is in progress but
-            may takes time to become available.
-          </p>
-        </div>
+
         {privateKeys.map(this.renderPrivateKey)}
         {
           this.state.editMode && (
@@ -122,6 +106,19 @@ class AccountOpenPGPKeys extends Component {
               <Icon type="key" />
             </AccountOpenPGPKeyForm>
         )}
+
+        <div className="m-account-openpgp__info">
+          <p>
+            This feature is in high development process and can evolve quickly. The keys you will
+            store here are available on your current browser only. This will not be uploaded on the
+            server and you will not able to see it on any other devices.
+          </p>
+          <p>
+            Be warned, the key pair generation is pretty slow and will freeze this page for
+            approximatively 20 seconds (depends on your device capacities). A fix is in progress but
+            may takes time to become available.
+          </p>
+        </div>
       </div>
     );
   }
