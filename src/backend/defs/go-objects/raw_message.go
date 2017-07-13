@@ -32,6 +32,7 @@ func (msg *RawMessage) UnmarshalCQLMap(input map[string]interface{}) {
 	size, _ := input["raw_size"].(int)
 	msg.Raw_Size = uint64(size)
 	msg.URI, _ = input["uri"].(string)
+
 	internal_date, _ := input["internal_date"].(time.Time)
 	msg.InternalDate = time.Time(internal_date) 
 	server, _ := input["server"].(string)

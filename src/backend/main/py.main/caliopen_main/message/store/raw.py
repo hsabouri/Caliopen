@@ -22,6 +22,7 @@ class RawMessage(BaseModel):
     version_tls = columns.Text()
     cipher_suite = columns.Text()
 
+
 class UserRawLookup(BaseModel):
     """User's raw message pointer."""
 
