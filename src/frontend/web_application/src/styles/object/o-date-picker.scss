@@ -36,15 +36,7 @@ $react-dates-z-index: 0 !default;
 
 // overriding colors for SingleDatePicker
 .SingleDatePicker__picker {
-  background-color: $react-dates-color-white;
-}
-
-.SingleDatePicker__picker--portal {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.SingleDatePicker__picker--full-screen-portal {
-  background-color: $react-dates-color-white;
+  background-color: none;
 }
 
 .SingleDatePicker__close {
@@ -80,6 +72,7 @@ $react-dates-z-index: 0 !default;
 }
 
 .SingleDatePickerInput {
+  background-color: none;
   border: none;
 }
 
@@ -94,6 +87,7 @@ $react-dates-z-index: 0 !default;
 }
 
 .SingleDatePickerInput__calendar-icon {
+  padding: 0;
   svg {
     fill: $react-dates-color-gray-light;
   }

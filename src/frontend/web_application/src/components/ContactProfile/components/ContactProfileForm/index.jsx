@@ -41,7 +41,7 @@ class ContactProfileForm extends Component {
         birthday: '',
       },
     },
-    date: null,
+    birthday: null,
     focused: false,
   };
 
@@ -67,6 +67,11 @@ class ContactProfileForm extends Component {
         },
       },
     });
+  }
+
+  handleBirthdayChange = (birthday) => {
+    this.setState({ birthday });
+    console.log(this.state.birthday); // eslint-disable-line
   }
 
   handleSubmit = (event) => {
@@ -121,12 +126,17 @@ class ContactProfileForm extends Component {
           <div className="m-contact-profile-form__birthday-label">
             {__('contact_profile.form.birthday.label')}
           </div>
+
           <SingleDatePicker
-            date={this.state.date} // momentPropTypes.momentObj or null
+            placeholder={__('contact_profile.form.birthday.placeholder')}
+            date={this.state.birthday} // momentPropTypes.momentObj or null
             numberOfMonths={1}
             showDefaultInputIcon
+            displayFormat="D/M/YYYY"
+            // isOutsideRange allows picking past days
+            // TODO: prevent picking dates after current date
             isOutsideRange={() => false}
-            onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
+            onDateChange={this.handleBirthdayChange}
             focused={this.state.focused} // PropTypes.bool
             onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
           />
