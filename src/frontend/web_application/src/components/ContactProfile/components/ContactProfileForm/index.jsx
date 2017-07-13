@@ -1,8 +1,10 @@
 import React, { PropTypes, Component } from 'react';
+import { SingleDatePicker } from 'react-dates';
 import { withTranslator } from '@gandi/react-translate';
 import Button from '../../../Button';
 import { TextFieldGroup } from '../../../form';
 import './style.scss';
+
 
 const generateStateFromProps = (props, prevState) => {
   const contactInfo = props.contact.info || {};
@@ -40,6 +42,8 @@ class ContactProfileForm extends Component {
         birthday: '',
       },
     },
+    date: null,
+    focused: false,
   };
 
   componentWillMount() {
@@ -114,13 +118,15 @@ class ContactProfileForm extends Component {
           name="name_suffix"
           onChange={this.handleChanges}
         />
-        <TextFieldGroup
-          className="m-contact-profile-form__birthday"
-          value={this.state.contact.infos.birthday}
-          label={__('contact_profile.form.birthday.label')}
-          name="birthday"
-          onChange={this.handleInfosChanges}
-        />
+        <div className="m-contact-profile-form__birthday">
+          {__('contact_profile.form.birthday.label')}
+          <SingleDatePicker
+            date={this.state.date} // momentPropTypes.momentObj or null
+            onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
+            focused={this.state.focused} // PropTypes.bool
+            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+          />
+        </div>
         <div className="m-contact-profile-form__save-button">
           <div className="m-contact-profile-form__save-button-wrapper">
             <Button type="submit" display="expanded" shape="plain" icon="check">{__('contact_profile.action.save')}</Button>
