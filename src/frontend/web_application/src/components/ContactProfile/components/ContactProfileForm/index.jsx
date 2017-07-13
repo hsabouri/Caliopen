@@ -5,7 +5,6 @@ import Button from '../../../Button';
 import { TextFieldGroup } from '../../../form';
 import './style.scss';
 
-
 const generateStateFromProps = (props, prevState) => {
   const contactInfo = props.contact.info || {};
 
@@ -119,9 +118,14 @@ class ContactProfileForm extends Component {
           onChange={this.handleChanges}
         />
         <div className="m-contact-profile-form__birthday">
-          {__('contact_profile.form.birthday.label')}
+          <div className="m-contact-profile-form__birthday-label">
+            {__('contact_profile.form.birthday.label')}
+          </div>
           <SingleDatePicker
             date={this.state.date} // momentPropTypes.momentObj or null
+            numberOfMonths={1}
+            showDefaultInputIcon
+            isOutsideRange={() => false}
             onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
             focused={this.state.focused} // PropTypes.bool
             onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired

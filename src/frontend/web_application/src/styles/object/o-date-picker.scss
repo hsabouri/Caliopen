@@ -1,3 +1,4 @@
+// overriding variables for react-dates (from ~react-dates/css/variables.scss )
 $react-dates-width-input: 130px !default;
 $react-dates-width-arrow: 24px !default;
 $react-dates-width-tooltip-arrow: 20px !default;
@@ -27,38 +28,19 @@ $react-dates-color-focus: #99ede6 !default;
 
 $react-dates-z-index: 0 !default;
 
+// according to docs, this should be placed after overriding variables
+// @import '~react-dates/css/variables.scss';
+@import '~react-dates/css/styles.scss';
+@import 'o-form-element.scss';
 
-.SingleDatePicker {
-  position: relative;
-  display: inline-block;
-}
 
+// overriding colors for SingleDatePicker
 .SingleDatePicker__picker {
-  z-index: $react-dates-z-index + 1;
   background-color: $react-dates-color-white;
-  position: absolute;
-  top: $react-dates-spacing-vertical-picker;
-}
-
-.SingleDatePicker__picker--rtl {
-  direction: rtl;
-}
-
-.SingleDatePicker__picker--direction-left {
-  left: 0;
-}
-
-.SingleDatePicker__picker--direction-right {
-  right: 0;
 }
 
 .SingleDatePicker__picker--portal {
   background-color: rgba(0, 0, 0, 0.3);
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
 }
 
 .SingleDatePicker__picker--full-screen-portal {
@@ -66,67 +48,43 @@ $react-dates-z-index: 0 !default;
 }
 
 .SingleDatePicker__close {
-  background: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-  padding: 0;
-  cursor: pointer;
-
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 15px;
-  z-index: $react-dates-z-index + 2;
-
   svg {
-    height: 15px;
-    width: 15px;
     fill: $react-dates-color-gray-lighter;
   }
 
   &:hover,
   &:focus {
     color: darken(#cacccd, 10%);
-    text-decoration: none;
   }
 }
 
+// overriding colors for date input
+.DateInput {
+  @include o-form-element;
+  @include o-form-element--dark;
+}
+
+.DateInput--disabled {
+  background: $react-dates-color-gray-lighter;
+}
+
+.DateInput__display-text--has-input {
+  color: $react-dates-color-text;
+}
+
+.DateInput__display-text--focused {
+  background: $react-dates-color-focus;
+  border-color: $react-dates-color-focus;
+  border-radius: 3px;
+  color: $react-dates-color-text-focus;
+}
+
 .SingleDatePickerInput {
-  background-color: $react-dates-color-white;
-  border: 1px solid $react-dates-color-border;
-}
-
-.SingleDatePickerInput--rtl {
-  direction: rtl;
-}
-
-.SingleDatePickerInput__clear-date {
-  background: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  padding: 10px;
-  margin: 0 10px 0 5px;
+  border: none;
 }
 
 .SingleDatePickerInput__clear-date svg {
   fill: $react-dates-color-gray-light;
-  height: 12px;
-  width: 15px;
-  vertical-align: middle;
-}
-
-.SingleDatePickerInput__clear-date--hide {
-  visibility: hidden;
 }
 
 .SingleDatePickerInput__clear-date:focus,
@@ -136,26 +94,7 @@ $react-dates-z-index: 0 !default;
 }
 
 .SingleDatePickerInput__calendar-icon {
-  background: none;
-  border: 0;
-  color: inherit;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  padding: 10px;
-  margin: 0 5px 0 10px;
-
   svg {
     fill: $react-dates-color-gray-light;
-    height: 15px;
-    width: 14px;
-    vertical-align: middle;
   }
 }
-
-@import '~react-dates/css/variables.scss';
-@import '~react-dates/css/styles.scss';

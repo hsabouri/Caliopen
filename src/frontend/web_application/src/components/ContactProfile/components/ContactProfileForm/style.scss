@@ -11,6 +11,14 @@
     line-height: $co-component__height;
   }
 
+  &__birthday {
+
+  }
+
+  &__birthday-label {
+
+  }
+
   @include breakpoint(medium) {
     &,
     // XXX: mode to remote ident form
