@@ -19,8 +19,8 @@ class RawMessage(BaseModel):
     internal_date = columns.DateTime()
     server = columns.Text()
     protocol = columns.Text()
-    versiontls = columns.Text()
-    ciphersuite = columns.Text()
+    version_tls = columns.Text()
+    cipher_suite = columns.Text()
 
 class UserRawLookup(BaseModel):
     """User's raw message pointer."""
