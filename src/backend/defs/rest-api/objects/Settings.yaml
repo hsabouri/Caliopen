@@ -16,4 +16,4 @@ properties:
   notification_style:
     type: string
   notification_delay:
-    type: int
+    type: integer
