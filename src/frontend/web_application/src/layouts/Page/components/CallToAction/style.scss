@@ -17,13 +17,19 @@
   &:focus,
   &:hover {
     visibility: visible;
+
+    .m-call-to-action__btn {
+      display: block;
+    }
   }
 
   &__btn {
+    display: none;
     margin-bottom: 1rem;
     box-shadow: $co-shadow;
 
     &--principal {
+      display: block;
       margin-bottom: 0;
       font-size: 1em;
       visibility: visible;
