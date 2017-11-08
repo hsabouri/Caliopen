@@ -7,6 +7,7 @@ import Moment from 'react-moment';
 import ContactAvatarLetter from '../../../ContactAvatarLetter';
 import Button from '../../../Button';
 import Icon from '../../../Icon';
+import Link from '../../../Link';
 import TextBlock from '../../../TextBlock';
 import MultidimensionalPi from '../../../MultidimensionalPi';
 import Dropdown, { withDropdownControl } from '../../../../components/Dropdown';
@@ -109,6 +110,8 @@ class Message extends Component {
       onReply, onCopyTo, onEditTags, __,
     } = this.props;
     const author = message.participants.find(participant => participant.type === 'From');
+    const authorId = author.contact_ids[0];
+
     const typeTranslations = {
       email: __('message-list.message.protocol.email'),
     };
@@ -126,11 +129,13 @@ class Message extends Component {
     return (
       <div className="m-message" onChange={this.onChange}>
         <div className="m-message__avatar-col">
-          <ContactAvatarLetter
-            contact={author}
-            className="m-message__avatar"
-            contactDisplayFormat="address"
-          />
+          <Link to={`/contacts/${authorId}`}>
+            <ContactAvatarLetter
+              contact={author}
+              className="m-message__avatar"
+              contactDisplayFormat="address"
+            />
+          </Link>
         </div>
         <div className="m-message__container">
           <div className={topBarClassName}>
