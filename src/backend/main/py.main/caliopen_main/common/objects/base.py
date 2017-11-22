@@ -1,6 +1,5 @@
 import zope.interface
 
-import types
 import uuid
 import datetime
 import pytz
@@ -82,7 +81,7 @@ class ObjectDictifiable(CaliopenObject):
         self_dict = {}
         for att, val in vars(self).items():
             if not att.startswith("_") and val is not None:
-                if isinstance(self._attrs[att], types.ListType):
+                if isinstance(self._attrs[att], list, tuple):
                     lst = []
                     if len(att) > 0:
                         if issubclass(self._attrs[att][0], ObjectDictifiable):
@@ -110,15 +109,15 @@ class ObjectDictifiable(CaliopenObject):
                 unmarshall_item(document, attr, self, attrtype,
                                 is_creation=False)
             else:
-                if isinstance(attrtype, types.ListType):
+                if isinstance(attrtype, list, tuple):
                     setattr(self, attr, [])
-                elif issubclass(attrtype, types.DictType):
+                elif issubclass(attrtype, dict):
                     setattr(self, attr, {})
-                elif issubclass(attrtype, types.BooleanType):
+                elif issubclass(attrtype, bool):
                     setattr(self, attr, False)
-                elif issubclass(attrtype, types.StringType):
+                elif issubclass(attrtype, str):
                     setattr(self, attr, "")
-                elif issubclass(attrtype, types.IntType):
+                elif issubclass(attrtype, int):
                     setattr(self, attr, 0)
                 else:
                     setattr(self, attr, None)
@@ -244,7 +243,7 @@ class ObjectStorable(ObjectJsonDictifiable):
             if not att.startswith("_") and att in self_keys:
                 # TODO : manage protected attrs
                 # (ie attributes that user should not be able to change)
-                if isinstance(self._attrs[att], list):
+                if isinstance(self._attrs[att], list, tuple):
                     # TODO : manage change within list to only elem changed
                     # (use builtin set() collection ?)
                     if issubclass(self._attrs[att][0], CaliopenObject):
@@ -415,8 +414,8 @@ class ObjectUser(ObjectStorable):
         cur_val = getattr(self, key)
         msg = "Patch current_state not consistent with db, step {} key {}"
 
-        if isinstance(current_attr, types.ListType):
-            if not isinstance(cur_val, types.ListType):
+        if isinstance(current_attr, list, tuple):
+            if not isinstance(cur_val, list, tuple):
                 raise main_errors.PatchConflict(
                     messag=msg.format(0, key))
 
@@ -427,7 +426,7 @@ class ObjectUser(ObjectStorable):
                 raise main_errors.PatchConflict(
                     message=msg.format(0.5, key))
         else:
-            if isinstance(current_attr, types.ListType):
+            if isinstance(current_attr, list, tuple):
                 if old_val == [] and cur_val != []:
                     raise main_errors.PatchConflict(
                         message=msg.format(1, key))
@@ -445,7 +444,7 @@ class ObjectUser(ObjectStorable):
                     else:
                         raise main_errors.PatchConflict(
                             message=msg.format(3, key))
-            elif issubclass(self._attrs[key], types.DictType):
+            elif issubclass(self._attrs[key], dict):
                 if cmp(old_val, cur_val) != 0:
                     raise main_errors.PatchConflict(
                         message=msg.format(4, key))
@@ -602,7 +601,8 @@ class ObjectIndexable(ObjectUser):
             try:
                 self.update_index(wait_for=True)
             except Exception as exc:
-                log.info("apply_patch update_index() exception: {}".format(exc))
+                log.info("apply_patch update_index() exception: {}".
+                         format(exc))
                 raise exc
 
 
@@ -615,8 +615,8 @@ def unmarshall_item(document, key, target_object, target_attr_type,
     :param document: source dict
     :param key: source dict key to unmarshall
     :param target_object: object to unmarshall document[key] into
-    :param target_attr_type: the types.type of corresponding attr in target obj.
-    :param is_creation: if true, we are in the context of the creation of an obj
+    :param target_attr_type: the type of corresponding attr in target obj
+    :param is_creation: if true, we are in the context of creating an object
     :return: nothing, target object is modified in-place
     """
 
