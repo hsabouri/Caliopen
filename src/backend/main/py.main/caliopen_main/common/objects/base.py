@@ -444,7 +444,7 @@ class ObjectUser(ObjectStorable):
                         raise main_errors.PatchConflict(
                             message=msg.format(3, key))
             elif issubclass(self._attrs[key], dict):
-                if cmp(old_val, cur_val) != 0:
+                if old_val != cur_val:
                     raise main_errors.PatchConflict(
                         message=msg.format(4, key))
             else:
