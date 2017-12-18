@@ -113,12 +113,8 @@ class Message(ObjectIndexable):
         message.unmarshall_json_dict(draft_param.to_primitive())
         message.user_id = uuid.UUID(user_id)
         message.is_draft = True
-<<<<<<< HEAD
         message.is_received = False
-        message.type = "email"  # TODO: type handling inferred from participants
-=======
-        message.type = "email"  # TODO: type handling from participants
->>>>>>> Get rid of python2 types package
+        message.type = "email"
         message.date_insert = datetime.datetime.now(tz=pytz.utc)
 
         try:
