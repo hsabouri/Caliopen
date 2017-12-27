@@ -18,8 +18,8 @@ from ..base.exception import MergePatchError, ValidationError
 log = logging.getLogger(__name__)
 
 
-@resource(collection_path='/devices',
-          path='/devices/{device_id}',
+@resource(collection_path='/api/v1/devices',
+          path='/api/v1/devices/{device_id}',
           name='Device',
           factory=DefaultContext
           )
