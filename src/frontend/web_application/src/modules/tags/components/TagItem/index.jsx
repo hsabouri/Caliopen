@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withI18n } from 'lingui-react';
-import { Button, Spinner } from '../../../';
-import { getTagLabel } from '../../../../modules/tags';
+import { Button, Spinner } from '../../../../components';
+import { getTagLabel } from '../../services/getTagLabel';
 
 import './style.scss';
 
