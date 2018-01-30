@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withI18n } from 'lingui-react';
 import { Section, TextList, TextItem } from '../../../../components';
-import AddressDetails from './components/AddressDetails';
-import BirthdayDetails from './components/BirthdayDetails';
-import EmailDetails from './components/EmailDetails';
-import IdentityDetails from './components/IdentityDetails';
-import ImDetails from './components/ImDetails';
-import OrgaDetails from './components/OrgaDetails';
-import PhoneDetails from './components/PhoneDetails';
+import AddressDetails from '../AddressDetails';
+import BirthdayDetails from '../BirthdayDetails';
+import EmailDetails from '../EmailDetails';
+import IdentityDetails from '../IdentityDetails';
+import ImDetails from '../ImDetails';
+import OrgaDetails from '../OrgaDetails';
+import PhoneDetails from '../PhoneDetails';
 import './style.scss';
 
 @withI18n()
