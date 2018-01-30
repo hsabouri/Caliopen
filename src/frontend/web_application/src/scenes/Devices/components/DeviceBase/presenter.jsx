@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Section } from '../../../../components/';
+<<<<<<< HEAD:src/frontend/web_application/src/scenes/Devices/components/DeviceBase/presenter.jsx
 import PiBar from '../../../../components/PiBar/presenter';
+=======
+import PiBar from './components/PiBar/presenter';
+>>>>>>> Refactor directories:src/frontend/web_application/src/scenes/Devices/components/DeviceBase/presenter.jsx
 import DeviceForm from './components/DeviceForm';
 import DeviceInformation from './components/DeviceInformation';
 import VerifyDevice from './components/VerifyDevice';

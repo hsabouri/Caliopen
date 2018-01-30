@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
+<<<<<<< HEAD:src/frontend/web_application/src/scenes/Devices/components/DeviceBase/components/DeviceInformation/presenter.jsx
 import DefList from '../../../../../../components/DefList';
+=======
+import { DefList } from '../../../../../../components/';
+>>>>>>> Refactor directories:src/frontend/web_application/src/scenes/Devices/components/DeviceBase/components/DeviceInformation/presenter.jsx
 
 const DeviceInformation = ({ device, locale, i18n }) => (
   <DefList

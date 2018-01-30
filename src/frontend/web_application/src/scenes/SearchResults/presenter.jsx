@@ -4,9 +4,7 @@ import debounce from 'lodash.debounce';
 import { Trans } from 'lingui-react';
 import { WithSettings } from '../../modules/settings';
 import SearchResultsLayout from '../../layouts/SearchResults';
-import Link from '../../components/Link';
-import { PageTitle, Button } from '../../components/';
-import InfiniteScroll from '../../components/InfiniteScroll';
+import { Link, InfiniteScroll, PageTitle, Button } from '../../components/';
 import MessageResultItem from './components/MessageResultItem';
 import ContactResultItem from './components/ContactResultItem';
 
